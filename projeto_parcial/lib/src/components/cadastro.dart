@@ -19,7 +19,7 @@ class _CadastroPage extends State<CadastroPage> {
           child: Column(
             children: <Widget>[
               Container(
-                height: 100,
+                height: 50,
                 child: Center(
                   child: Text('Cadastrar.', style: TextStyle(fontSize: 30)),
                 ),
@@ -81,58 +81,81 @@ class _CadastroPage extends State<CadastroPage> {
                   return null;
                 },
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Rua'),
-                validator: (value) {
-                  if (value.isEmpty) return 'Campo Obrigatório';
-                  return null;
-                },
+              Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "Número"),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "Complemento"),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(3),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "Bairro"),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              // Row(
-              //   mainAxisSize: MainAxisSize.min,
-              //   children: [
-              //     Column(
-              //       children: <Widget>[
-              //         TextFormField(
-              //           decoration: InputDecoration(
-              //             labelText: 'Número',
-              //             isDense: true,
-              //           ),
-              //           validator: (value) {
-              //             if (value.isEmpty) return 'Campo Obrigatório';
-              //             return null;
-              //           },
-              //         ),
-              //       ],
-              //     ),
-              //     Column(
-              //       children: <Widget>[
-              //         TextFormField(
-              //           decoration: InputDecoration(labelText: 'Complemento'),
-              //           validator: (value) {
-              //             if (value.isEmpty) return 'Campo Obrigatório';
-              //             return null;
-              //           },
-              //         ),
-              //       ],
-              //     ),
-              //     Column(
-              //       children: <Widget>[
-              //         TextFormField(
-              //           decoration: InputDecoration(labelText: 'Bairro'),
-              //           validator: (value) {
-              //             if (value.isEmpty) return 'Campo Obrigatório';
-              //             return null;
-              //           },
-              //         ),
-              //       ],
-              //     )
-              //   ],
-              // ),
+              Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.all(1),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "Cidade"),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(1),
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: "UF"),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 40),
               RaisedButton(
-                child: Text('Cadastrar'),
-                onPressed: () {},
-              )
+                elevation: 5.0,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cadastro');
+                },
+                padding: EdgeInsets.all(15.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                color: Colors.white,
+                child: Text(
+                  'Cadastrar',
+                  style: TextStyle(
+                    color: Color(0xFF527DAA),
+                    letterSpacing: 1.5,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans',
+                  ),
+                ),
+              ),
             ],
           ),
         ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_parcial/src/cadastro.dart';
-import 'package:projeto_parcial/src/login.dart';
-import 'package:provider/provider.dart';
-import 'src/home.dart';
+import 'package:projeto_parcial/src/components/cadastro.dart';
+import 'package:projeto_parcial/src/components/login.dart';
+import 'src/components/home.dart';
 
 void main() {
   runApp(MaterialApp(
+    // theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
     title: 'App 04',
     initialRoute: '/login',
