@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_parcial/utilities/constants.dart';
+import 'package:projeto_parcial/src/utilities/constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,33 +9,48 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   final _formkey = GlobalKey<FormState>();
 
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+
+  String email = '';
+  String senha = '';
+
   Widget _buildLoginTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 10.0),
         Container(
-            alignment: Alignment.centerLeft,
-            height: 60.0,
-            decoration: kBoxDecorationStyle,
-            child: TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Usuário',
-                labelStyle: TextStyle(
-                  color: Colors.black
-                ) ,
-                prefixIcon: Icon(Icons.person, color: Colors.black),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
+          child: TextFormField(
+            style: TextStyle(color: Colors.black),
+            controller: _emailController,
+            decoration: InputDecoration(
+              hintStyle: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "WorkSansLight",
+                  fontSize: 18.0),
+              filled: true,
+              fillColor: Colors.white,
+              hintText: "E-mail",
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                  borderSide: BorderSide(color: Colors.white, width: 0.5)),
+              prefixIcon: const Icon(
+                Icons.email,
+                color: Colors.black,
               ),
-              validator: (value) {
-                if (value.isEmpty) return 'Campo Obrigatório';
-                return null;
-              },
-            )),
+            ),
+            keyboardType: TextInputType.emailAddress,
+            validator: (value) {
+              if (value.isEmpty || !value.contains("@"))
+                return "E-mail inválido!";
+            },
+            onSaved: (txt) {
+              setState(() {
+                email = txt;
+              });
+            },
+          ),
+        )
       ],
     );
   }
@@ -46,58 +61,57 @@ class _LoginPage extends State<LoginPage> {
       children: <Widget>[
         SizedBox(height: 10.0),
         Container(
-          alignment: Alignment.centerLeft,
-          height: 60.0,
           child: TextFormField(
-            obscureText: true,
+            style: TextStyle(color: Colors.black),
+            controller: _passController,
             decoration: InputDecoration(
-              labelText: 'Senha',
-              labelStyle: TextStyle(
-                  color: Colors.black
-              ),
-              prefixIcon: Icon(Icons.lock, color: Colors.black),
-              border: new OutlineInputBorder(
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(10.0),
-                ),
+              hintStyle: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "WorkSansLight",
+                  fontSize: 18.0),
+              filled: true,
+              fillColor: Colors.white,
+              hintText: "Senha",
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                  borderSide: BorderSide(color: Colors.white24, width: 0.5)),
+              prefixIcon: const Icon(
+                Icons.lock_outline,
+                color: Colors.black,
               ),
             ),
+            obscureText: true,
             validator: (value) {
-              if (value.isEmpty)
-                return 'Campo Obrigatório';
-              else if (value.length < 4)
-                return 'Senha muito curta. (Pelo menos 4 caracteres)';
-              return null;
+              if (value.isEmpty || value.length < 6) return "Senha inválida!";
+            },
+            onSaved: (txt) {
+              setState(() {
+                senha = txt;
+              });
             },
           ),
-        ),
+        )
       ],
     );
   }
 
   Widget _buildLoginBtn() {
     return Container(
-      width: double.infinity,
+      width: 200,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          if (_formkey.currentState.validate()) {}
+          if (_formkey.currentState.validate()) {
+            _formkey.currentState.save();
+            Navigator.pushNamed(context, '/home');
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white,
-        child: Text(
-          'Entrar',
-          style: TextStyle(
-            color: Color(0xFF527DAA),
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
+        color: Colors.orange,
+        child: Text('Entrar', style: botao),
       ),
     );
   }
@@ -105,7 +119,7 @@ class _LoginPage extends State<LoginPage> {
   Widget _buildCadastrarBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: double.infinity,
+      width: 200,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
@@ -115,16 +129,10 @@ class _LoginPage extends State<LoginPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white,
+        color: Colors.orange,
         child: Text(
           'Cadastrar',
-          style: TextStyle(
-            color: Color(0xFF527DAA),
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
+          style: botao,
         ),
       ),
     );
@@ -147,20 +155,20 @@ class _LoginPage extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
-      appBar: AppBar(title: Text('Login')),
+      backgroundColor: Colors.black,
+      // appBar: AppBar(title: Text('Login')),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Form(
           key: _formkey,
           child: Column(
             children: <Widget>[
+              SizedBox(height: 150.0),
+              Image(
+                image: AssetImage('assets/logo.png'),
+              ),
               Container(
-                height: 350,
-                child: Center(
-                  child:
-                      Text('Bem vindo ao app', style: TextStyle(fontSize: 30)),
-                ),
+                height: 150,
               ),
               _buildLoginTF(),
               _buildPasswordTF(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_parcial/src/utilities/constants.dart';
 
 class CadastroPage extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _CadastroPage extends State<CadastroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('SPADONI CARVALHO')),
+      backgroundColor: Colors.grey[300],
       body: Container(
         padding: EdgeInsets.all(20),
         child: Form(
@@ -24,6 +25,7 @@ class _CadastroPage extends State<CadastroPage> {
                   child: Text('Cadastrar.', style: TextStyle(fontSize: 30)),
                 ),
               ),
+              SizedBox(height: 50.0),
               TextFormField(
                 decoration:
                     InputDecoration(labelText: 'Pessoa Fídica/Jurídica'),
@@ -134,7 +136,7 @@ class _CadastroPage extends State<CadastroPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               RaisedButton(
                 elevation: 5.0,
                 onPressed: () {
@@ -144,16 +146,10 @@ class _CadastroPage extends State<CadastroPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                color: Colors.white,
+                color: Colors.orange,
                 child: Text(
                   'Cadastrar',
-                  style: TextStyle(
-                    color: Color(0xFF527DAA),
-                    letterSpacing: 1.5,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans',
-                  ),
+                  style: botao,
                 ),
               ),
             ],
