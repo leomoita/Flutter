@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_parcial/src/components/cadastro.dart';
 import 'package:projeto_parcial/src/components/login.dart';
+import 'package:projeto_parcial/src/components/meuProcesso.dart';
+import 'package:projeto_parcial/src/components/solicitarReuniao.dart';
 import 'src/components/home.dart';
 
 void main() {
@@ -13,22 +15,8 @@ void main() {
       '/home': (context) => HomePage(),
       '/login': (context) => LoginPage(),
       '/cadastro': (context) => CadastroPage(),
+      '/meusProcessos': (context) => MeuProcesssoPage(),
+      '/solicitarReuniao': (context) => SolicitarReuniaoPage(),
     },
   ));
 }
-
-// class MeuApp extends StatelessWidget{
-
-//   @override
-//   Widget build(BuildContext context){
-//     return MaterialApp(
-//     theme: ThemeData(
-//       brightness: Brightness.dark
-//     ),
-//       routes: {
-//         '/home': (context) => HomePage(),
-//       },
-//       initialRoute: '/home',
-//     );
-//   }
-// }

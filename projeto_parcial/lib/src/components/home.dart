@@ -6,7 +6,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  final _formkey = GlobalKey<FormState>();
 
   _HomePage({this.icon, this.title, this.rota});
   final IconData icon;
@@ -27,7 +26,7 @@ class _HomePage extends State<HomePage> {
         child: InkWell(
           onTap: () => Navigator.pushNamed(context, rota),
           child: Center(
-            child: Column(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Icon(
@@ -57,11 +56,11 @@ class _HomePage extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
               ),
               Container(
-                height: 130,
+                height: 100,
               ),
-              _buildMeusProcessosTF(Icons.gavel, 'Meus Processos', 'teste'),
-              _buildMeusProcessosTF(Icons.edit, 'Atualização de \nProcessos', 'teste'),
-              _buildMeusProcessosTF(Icons.perm_contact_calendar,'Solicitar Reunião \ncom Advogado', 'teste')
+              _buildMeusProcessosTF(Icons.gavel, 'Meus Processos', '/meusProcessos'),
+              _buildMeusProcessosTF(Icons.edit, 'Atualização de \nProcessos', '/teste'),
+              _buildMeusProcessosTF(Icons.perm_contact_calendar,'Solicitar Reunião \ncom Advogado', '/solicitarReuniao')
             ],
           ),
         ));
