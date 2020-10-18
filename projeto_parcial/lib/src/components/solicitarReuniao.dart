@@ -97,11 +97,11 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
             children: <Widget>[
               Icon(
                 Icons.calendar_today,
-                size: 70.0,
+                size: 50.0,
               ),
               Text(
                 'SOLICITAR REUNIÃO',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               Container(
                 height: 25,
