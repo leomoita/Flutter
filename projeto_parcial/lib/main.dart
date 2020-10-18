@@ -12,6 +12,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'App 04',
     initialRoute: '/login',
+    //asaf
     routes: {
       '/home': (context) => HomePage(),
       '/login': (context) => LoginPage(),
