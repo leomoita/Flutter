@@ -22,7 +22,7 @@ class _CadastroPage extends State<CadastroPage> {
               Container(
                 height: 50,
                 child: Center(
-                  child: Text('Cadastrar.', style: TextStyle(fontSize: 30)),
+                  child: Text('Cadastrar', style: TextStyle(fontSize: 30)),
                 ),
               ),
               SizedBox(height: 50.0),

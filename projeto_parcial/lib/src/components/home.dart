@@ -59,7 +59,7 @@ class _HomePage extends State<HomePage> {
                 height: 100,
               ),
               _buildMeusProcessosTF(Icons.gavel, 'Meus Processos', '/meusProcessos'),
-              _buildMeusProcessosTF(Icons.edit, 'Atualização de \nProcessos', '/teste'),
+              _buildMeusProcessosTF(Icons.edit, 'Atualização de \nProcessos', '/atualizacaoProcessos'),
               _buildMeusProcessosTF(Icons.perm_contact_calendar,'Solicitar Reunião \ncom Advogado', '/solicitarReuniao')
             ],
           ),

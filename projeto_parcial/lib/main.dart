@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_parcial/src/components/atualizacaoProcessos.dart';
 import 'package:projeto_parcial/src/components/cadastro.dart';
 import 'package:projeto_parcial/src/components/login.dart';
 import 'package:projeto_parcial/src/components/meuProcesso.dart';
 import 'package:projeto_parcial/src/components/solicitarReuniao.dart';
-import 'src/components/home.dart';
+import 'package:projeto_parcial/src/components/home.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,6 +18,7 @@ void main() {
       '/cadastro': (context) => CadastroPage(),
       '/meusProcessos': (context) => MeuProcesssoPage(),
       '/solicitarReuniao': (context) => SolicitarReuniaoPage(),
+      '/atualizacaoProcessos': (context) => AtualizacaoProcessosPage(),
     },
   ));
 }
