@@ -115,6 +115,13 @@ Widget _buildDetailTitle(title) {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
+        appBar: new AppBar(
+          leading: BackButton(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
           child: Column(
@@ -129,7 +136,7 @@ Widget _buildDetailTitle(title) {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
               ),
               Container(
-                height: 25,
+                height: 20,
               ),
               _buildCardAtualizacaoProcesso(),
             ],

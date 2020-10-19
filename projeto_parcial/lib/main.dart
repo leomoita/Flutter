@@ -10,9 +10,8 @@ void main() {
   runApp(MaterialApp(
     // theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
-    title: 'App 04',
+    title: 'Spadoni Carvalho App',
     initialRoute: '/login',
-    //asaf
     routes: {
       '/home': (context) => HomePage(),
       '/login': (context) => LoginPage(),

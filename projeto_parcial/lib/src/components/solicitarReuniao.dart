@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:card_settings/card_settings.dart';
 
 class SolicitarReuniaoPage extends StatefulWidget {
   @override
@@ -7,8 +6,6 @@ class SolicitarReuniaoPage extends StatefulWidget {
 }
 
 class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
-  String _currentCity;
-
   get botao => null;
 
   get dropdownValue => null;
@@ -53,9 +50,9 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 17),
-                      value: _statusSel,
-                      items: _dropDownMenuItems,
-                      onChanged: changedDropDownItem,
+                      value: _statusSelProcesso,
+                      items: _dropDownProcessoItems,
+                      onChanged: changedDropDownProcesso,
                     ),
                   ),
                   Padding(
@@ -79,9 +76,9 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                           fontSize: 17),
-                      value: _statusSel,
-                      items: _dropDownMenuItems,
-                      onChanged: changedDropDownItem,
+                      value: _statusSelAdvogado,
+                      items: _dropDownAdvogadoItems,
+                      onChanged: changedDropDownAdvogado,
                     ),
                   ),
                   Padding(
@@ -125,7 +122,23 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
                     child: RaisedButton(
                       elevation: 9.0,
                       onPressed: () {
-                        Navigator.pushNamed(context, '/enviar');
+                        showDialog(
+                            context:  context,
+                            builder:  (BuildContext context) {
+                               return AlertDialog(
+                                title: new Text('Sucesso'),
+                                content: new Text('Reunião solicitada!'),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    child: new Text('Fechar'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                          },
+                        );
                       },
                       padding: EdgeInsets.all(15.0),
                       shape: RoundedRectangleBorder(
@@ -150,6 +163,13 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
+        appBar: new AppBar(
+          leading: BackButton(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
           child: Column(
@@ -164,7 +184,7 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               Container(
-                height: 25,
+                height: 20,
               ),
               _buildMeusProcessosTF(),
             ],
@@ -172,17 +192,29 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
         ));
   }
 
-  void changedDropDownItem(String selectedItem) {
+  List<DropdownMenuItem<String>> _dropDownAdvogadoItems;
+  String _statusSelAdvogado;
+
+  List<DropdownMenuItem<String>> _dropDownProcessoItems;
+  String _statusSelProcesso;
+
+  void changedDropDownAdvogado(String selectedItem) {
     setState(() {
-      _statusSel = selectedItem;
+      _statusSelAdvogado = selectedItem;
     });
   }
 
-  List<DropdownMenuItem<String>> _dropDownMenuItems;
-  String _statusSel;
+  void changedDropDownProcesso(String selectedItem) {
+    setState(() {
+      _statusSelProcesso = selectedItem;
+    });
+  }
 
-  List<DropdownMenuItem<String>> _getDropDownMenuItems() {
+  List<DropdownMenuItem<String>> _getDropDownAdvogadoItems() {
     List<DropdownMenuItem<String>> items = new List();
+
+    items.add(new DropdownMenuItem(
+        value: 'Selecione', child: new Text('Selecione')));
 
     items.add(new DropdownMenuItem(
         value: 'Roberto Souza', child: new Text('Roberto Souza')));
@@ -196,10 +228,25 @@ class _SolicitarReuniaoPage extends State<SolicitarReuniaoPage> {
     return items;
   }
 
+  List<DropdownMenuItem<String>> _getDropDownProcessoItems() {
+    List<DropdownMenuItem<String>> items = new List();
+
+    items.add(new DropdownMenuItem(
+        value: 'Selecione', child: new Text('Selecione')));
+
+    items.add(new DropdownMenuItem(
+        value: '0032209-81.2014.8.26.9999', child: new Text('0032209-81.2014.8.26.9999')));
+
+    return items;
+  }
+
   @override
   void initState() {
-    _dropDownMenuItems = _getDropDownMenuItems();
-    _statusSel = _dropDownMenuItems[0].value;
+    _dropDownAdvogadoItems = _getDropDownAdvogadoItems();
+    _statusSelAdvogado = 'Selecione';
+
+    _dropDownProcessoItems = _getDropDownProcessoItems();
+    _statusSelProcesso = 'Selecione';
 
     super.initState();
   }

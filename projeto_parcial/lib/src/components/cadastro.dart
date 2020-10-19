@@ -13,6 +13,13 @@ class _CadastroPage extends State<CadastroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+      appBar: new AppBar(
+          leading: BackButton(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+      ),
       body: Container(
         padding: EdgeInsets.all(20),
         child: Form(
