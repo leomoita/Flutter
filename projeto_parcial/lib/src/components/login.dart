@@ -43,6 +43,7 @@ class _LoginPage extends State<LoginPage> {
             validator: (value) {
               if (value.isEmpty || !value.contains("@"))
                 return "E-mail inválido!";
+              return null;
             },
             onSaved: (txt) {
               setState(() {
@@ -82,7 +83,9 @@ class _LoginPage extends State<LoginPage> {
             ),
             obscureText: true,
             validator: (value) {
-              if (value.isEmpty || value.length < 6) return "Senha inválida!";
+              if (value.isEmpty || value.length < 6) 
+                return "Senha inválida!";
+              return null;
             },
             onSaved: (txt) {
               setState(() {
